@@ -1,0 +1,59 @@
+@use 'styles/variables' as *;
+
+.keypad {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  &__btn {
+    height: 64px;
+    background: linear-gradient(145deg, var(--bg-card), var(--bg-surface));
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
+
+    &:active:not(:disabled) {
+      transform: scale(0.94);
+      background: var(--color-primary-dark);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 12px rgba(255, 87, 34, 0.4);
+      color: #ffffff;
+    }
+
+    &--action {
+      font-size: 1.1rem;
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+
+      .action-text {
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .backspace-icon {
+        width: 26px;
+        height: 26px;
+      }
+
+      &:active:not(:disabled) {
+        background: rgba(255, 87, 34, 0.2);
+        color: var(--color-primary-light);
+      }
+    }
+  }
+
+  &--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}

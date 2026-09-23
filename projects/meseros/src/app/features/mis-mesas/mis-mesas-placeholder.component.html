@@ -1,0 +1,41 @@
+<div class="mesas-view safe-area-bottom">
+  <header class="mesas-header">
+    <div class="saludo-box">
+      <span class="saludo-tag">TURNO ACTIVO</span>
+      <h2 class="saludo-title">¡Hola, {{ authService.meseroActual()?.nombre }}!</h2>
+      <p class="saludo-sub">Estas son tus mesas asignadas en este turno.</p>
+    </div>
+
+    <button
+      type="button"
+      class="btn-refrescar"
+      (click)="cargarMesas()"
+      title="Actualizar mesas">
+      <svg viewBox="0 0 24 24" class="refresh-icon">
+        <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/>
+      </svg>
+    </button>
+  </header>
+
+  @if (cargando()) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <span>Cargando tus mesas...</span>
+    </div>
+  } @else {
+    <div class="mesas-grid">
+      @for (mesa of mesas(); track mesa.id) {
+        <div class="mesa-card mesa-card--{{ mesa.estado.toLowerCase() }}">
+          <div class="mesa-card__top">
+            <span class="mesa-number">Mesa {{ mesa.numero }}</span>
+            <span class="mesa-capacidad">{{ mesa.capacidad }} personas</span>
+          </div>
+          <div class="mesa-card__bottom">
+            <span class="mesa-zona">{{ mesa.zona }}</span>
+            <span class="mesa-status-badge">{{ formatearEstadoMesa(mesa.estado) }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
