@@ -1,0 +1,103 @@
+<div class="login-wrapper safe-area-bottom">
+  <!-- PANTALLA 1: SELECCIÓN DE MESERO -->
+  @if (vista() === 'SELECCION_MESERO') {
+    <section class="view-meseros">
+      <div class="view-header">
+        <h2 class="view-title">¿Quién está en turno?</h2>
+        <p class="view-subtitle">Selecciona tu usuario para ingresar al servicio</p>
+      </div>
+
+      @if (cargandoMeseros()) {
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <span>Cargando meseros del turno...</span>
+        </div>
+      } @else {
+        <div class="meseros-grid">
+          @for (m of meseros(); track m.id) {
+            <button
+              type="button"
+              class="mesero-card-btn"
+              (click)="seleccionarMesero(m)">
+              <div class="avatar-large" [style.background-color]="m.avatarColor">
+                {{ m.nombre.charAt(0) }}
+              </div>
+              <span class="mesero-card-nombre">{{ m.nombre }}</span>
+              <span class="mesero-card-rol">Mesero</span>
+            </button>
+          }
+        </div>
+      }
+    </section>
+  }
+
+  <!-- PANTALLA 2: TECLADO Y PIN -->
+  @if (vista() === 'INGRESO_PIN') {
+    <section class="view-pin">
+      <div class="pin-header">
+        <button
+          type="button"
+          class="btn-cambiar-mesero"
+          (click)="cambiarMesero()"
+          title="Volver a lista de meseros">
+          <svg viewBox="0 0 24 24" class="arrow-back-icon">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/>
+          </svg>
+          Cambiar mesero
+        </button>
+
+        @if (meseroSeleccionado(); as mesero) {
+          <div class="mesero-pill-active">
+            <div class="avatar-small" [style.background-color]="mesero.avatarColor">
+              {{ mesero.nombre.charAt(0) }}
+            </div>
+            <div class="mesero-meta">
+              <span class="nombre">{{ mesero.nombre }}</span>
+              <span class="instruccion">Ingresa tu PIN de 4 dígitos</span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Indicadores de PIN (4 dots) con animación de sacudida -->
+      <div class="pin-display-container">
+        <div class="dots-wrapper" [class.shake]="sacudir()">
+          @for (i of puntosPin; track i) {
+            <div
+              class="pin-dot"
+              [class.pin-dot--filled]="pin().length > i"
+              [class.pin-dot--error]="errorMensaje() !== null">
+            </div>
+          }
+        </div>
+
+        <!-- Mensajes de Estado / Error / Bloqueo -->
+        <div class="pin-status-area">
+          @if (validando()) {
+            <span class="status-msg status-msg--info">
+              Verificando PIN...
+            </span>
+          } @else if (authService.estaBloqueado()) {
+            <span class="status-msg status-msg--lock">
+              🔒 Bloqueado por seguridad. Espera {{ authService.segundosRestantesBloqueo() }}s
+            </span>
+          } @else if (errorMensaje()) {
+            <span class="status-msg status-msg--error">
+              {{ errorMensaje() }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Teclado Numérico en Pantalla -->
+      <div class="pin-keypad-wrapper">
+        <app-numeric-keypad
+          [deshabilitado]="validando() || authService.estaBloqueado()"
+          (digito)="onDigito($event)"
+          (borrar)="onBorrar()"
+          (limpiar)="onLimpiar()">
+        </app-numeric-keypad>
+      </div>
+    </section>
+  }
+</div>
