@@ -1,0 +1,43 @@
+<header class="top-bar safe-area-top">
+  <div class="top-bar__brand">
+    <div class="top-bar__logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" class="flame-icon">
+        <path d="M12 2C8.5 7 5 10 5 14a7 7 0 0 0 14 0c0-4-3.5-7-7-12zm0 17a5 5 0 0 1-5-5c0-2.3 1.8-4.5 4-7.5 1.5 2 3.5 4.5 3.5 6.5a2.5 2.5 0 0 1-2.5 2.5z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="top-bar__titles">
+      <h1 class="top-bar__title">{{ titulo }}</h1>
+      <span class="top-bar__subtitle">{{ subtitulo }}</span>
+    </div>
+  </div>
+
+  <div class="top-bar__actions">
+    @if (useMocks) {
+      <span class="mock-badge" title="Operando con datos simulados en memoria">
+        MOCK
+      </span>
+    }
+
+    @if (meseroNombre) {
+      <div class="mesero-pill">
+        <span class="avatar-dot" [style.background-color]="meseroColor || '#ff5722'">
+          {{ meseroNombre.charAt(0) }}
+        </span>
+        <span class="mesero-name">{{ meseroNombre }}</span>
+      </div>
+    }
+
+    @if (mostrarCerrarSesion) {
+      <button
+        type="button"
+        class="btn-logout"
+        (click)="onCerrarSesion()"
+        aria-label="Cerrar sesión"
+        title="Cerrar sesión">
+        <svg viewBox="0 0 24 24" class="logout-icon" aria-hidden="true">
+          <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" fill="currentColor"/>
+        </svg>
+      </button>
+    }
+  </div>
+</header>

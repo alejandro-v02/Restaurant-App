@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">FogonPOS Meseros</string>
+    <string name="title_activity_main">FogonPOS Meseros</string>
+    <string name="package_name">com.fogonpos.meseros</string>
+    <string name="custom_url_scheme">com.fogonpos.meseros</string>
+</resources>

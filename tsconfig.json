@@ -3,6 +3,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -11,6 +13,11 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "paths": {
+      "@shared": ["./projects/shared/src/public-api.ts"],
+      "@shared/*": ["./projects/shared/src/lib/*"],
+      "shared": ["./projects/shared/src/public-api.ts"]
+    },
     "target": "ES2022",
     "module": "preserve"
   },
@@ -19,5 +26,19 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/shared/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/shared/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/meseros/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/meseros/tsconfig.spec.json"
+    }
+  ]
 }

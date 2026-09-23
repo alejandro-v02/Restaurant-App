@@ -1,0 +1,122 @@
+// ==========================================
+// DESIGN TOKENS - FOGÓN LLANERO (FogónPOS)
+// ==========================================
+
+// Paleta Carbón y Brasa
+$bg-main: #121212;
+$bg-surface: #1a1a1a;
+$bg-card: #242424;
+$bg-elevated: #2e2e2e;
+$bg-input: #1f1f1f;
+
+$color-primary: #ff5722;       // Naranja brasa viva
+$color-primary-light: #ff7043;
+$color-primary-dark: #d84315;
+$color-accent: #ffb300;        // Fuego / ámbar
+
+$text-primary: #f5f5f5;
+$text-secondary: #b0bec5;
+$text-muted: #78909c;
+$text-inverse: #121212;
+
+$border-subtle: #333333;
+$border-medium: #424242;
+$border-focus: #ff7043;
+
+// Estados de Mesa
+$estado-libre: #757575;
+$estado-libre-bg: rgba(117, 117, 117, 0.16);
+
+$estado-ocupada: #2196f3;
+$estado-ocupada-bg: rgba(33, 150, 243, 0.16);
+
+$estado-esperando: #ff9800;
+$estado-esperando-bg: rgba(255, 152, 0, 0.16);
+
+$estado-pidio-cuenta: #4caf50;
+$estado-pidio-cuenta-bg: rgba(76, 175, 80, 0.16);
+
+// Estados de Ítem de Pedido
+$item-borrador: #9e9e9e;
+$item-enviado: #00bcd4;
+$item-preparando: #ff9800;
+$item-listo: #4caf50;
+$item-entregado: #5c6bc0;
+
+// Espaciados
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Radios
+$radius-xs: 4px;
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-full: 9999px;
+
+// Sombras
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+$shadow-card: 0 4px 12px rgba(0, 0, 0, 0.45);
+$shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.6);
+$shadow-glow-brasa: 0 0 16px rgba(255, 87, 34, 0.35);
+
+// Ergonomía Móvil y Táctil
+$touch-target-min: 48px;
+$header-height: 56px;
+$bottom-bar-height: 64px;
+
+// Exposición en CSS Variables (:root)
+:root {
+  --bg-main: #{$bg-main};
+  --bg-surface: #{$bg-surface};
+  --bg-card: #{$bg-card};
+  --bg-elevated: #{$bg-elevated};
+  --bg-input: #{$bg-input};
+
+  --color-primary: #{$color-primary};
+  --color-primary-light: #{$color-primary-light};
+  --color-primary-dark: #{$color-primary-dark};
+  --color-accent: #{$color-accent};
+
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted: #{$text-muted};
+  --text-inverse: #{$text-inverse};
+
+  --border-subtle: #{$border-subtle};
+  --border-medium: #{$border-medium};
+  --border-focus: #{$border-focus};
+
+  --estado-libre: #{$estado-libre};
+  --estado-libre-bg: #{$estado-libre-bg};
+  --estado-ocupada: #{$estado-ocupada};
+  --estado-ocupada-bg: #{$estado-ocupada-bg};
+  --estado-esperando: #{$estado-esperando};
+  --estado-esperando-bg: #{$estado-esperando-bg};
+  --estado-pidio-cuenta: #{$estado-pidio-cuenta};
+  --estado-pidio-cuenta-bg: #{$estado-pidio-cuenta-bg};
+
+  --item-borrador: #{$item-borrador};
+  --item-enviado: #{$item-enviado};
+  --item-preparando: #{$item-preparando};
+  --item-listo: #{$item-listo};
+  --item-entregado: #{$item-entregado};
+
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-full: #{$radius-full};
+
+  --touch-target-min: #{$touch-target-min};
+  --header-height: #{$header-height};
+  --bottom-bar-height: #{$bottom-bar-height};
+}

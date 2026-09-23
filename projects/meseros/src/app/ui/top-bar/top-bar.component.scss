@@ -1,0 +1,123 @@
+@use 'styles/variables' as *;
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+  padding: 0 var(--spacing-md);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  &__logo {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(255, 87, 34, 0.4);
+
+    .flame-icon {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &__titles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.2px;
+  }
+
+  &__subtitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .mock-badge {
+    background: rgba(255, 179, 0, 0.15);
+    color: var(--color-accent);
+    border: 1px solid rgba(255, 179, 0, 0.35);
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.8px;
+  }
+
+  .mesero-pill {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background-color: var(--bg-card);
+    padding: 4px 10px 4px 4px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+
+    .avatar-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .mesero-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  }
+
+  .btn-logout {
+    min-height: 38px;
+    width: 38px;
+    padding: 0;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+
+    &:hover, &:active {
+      color: var(--color-primary);
+      background-color: rgba(255, 87, 34, 0.1);
+    }
+
+    .logout-icon {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
